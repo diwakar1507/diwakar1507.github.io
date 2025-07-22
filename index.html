@@ -1,0 +1,466 @@
+!DOCTYPE html
+html lang=en class=scroll-smooth
+head
+    meta charset=UTF-8
+    meta name=viewport content=width=device-width, initial-scale=1.0
+    titleDiwakar Dehariya - Portfoliotitle
+    script src=httpscdn.tailwindcss.comscript
+    link rel=preconnect href=httpsfonts.googleapis.com
+    link rel=preconnect href=httpsfonts.gstatic.com crossorigin
+    link href=httpsfonts.googleapis.comcss2family=Interwght@400;500;600;700&display=swap rel=stylesheet
+    script src=httpsunpkg.comlucide@latestscript
+    style
+        body {
+            font-family 'Inter', sans-serif;
+            background-color #000000;
+            cursor none;  Hide default cursor 
+        }
+         Custom Cursor 
+        .cursor-dot, .cursor-outline {
+            pointer-events none;
+            position fixed;
+            top 50%;
+            left 50%;
+            border-radius 50%;
+            opacity 0;
+            transform translate(-50%, -50%);
+            transition opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            z-index 9999;
+        }
+        .cursor-dot {
+            width 8px;
+            height 8px;
+            background-color #64ffda;
+        }
+        .cursor-outline {
+            width 40px;
+            height 40px;
+            background-color rgba(100, 255, 218, 0.2);
+            transition all 0.08s ease-out;
+        }
+        bodyhover .cursor-dot, bodyhover .cursor-outline {
+            opacity 1;
+        }
+        #particles-js {
+            position fixed;
+            width 100%;
+            height 100%;
+            top 0;
+            left 0;
+            z-index 0;
+        }
+        main, header, footer {
+            position relative;
+            z-index 1;
+        }
+        .section {
+            padding-top 6rem;
+            padding-bottom 6rem;
+            position relative;
+        }
+        .section-divider {
+            position absolute;
+            bottom -1px;
+            left 0;
+            width 100%;
+            overflow hidden;
+            line-height 0;
+            transform rotate(180deg);
+        }
+        .section-divider svg {
+            position relative;
+            display block;
+            width calc(100% + 1.3px);
+            height 80px;
+        }
+        .section-divider .shape-fill {
+            fill #000000;
+        }
+        .section-title {
+            font-size 2.5rem;
+            font-weight 700;
+            margin-bottom 4rem;
+            text-align center;
+            color #e2e8f0;
+        }
+        .text-gradient {
+            background linear-gradient(90deg, #64ffda, #00c6ff);
+            -webkit-background-clip text;
+            -webkit-text-fill-color transparent;
+        }
+        .project-card {
+            background-color #111827;
+            border-radius 0.5rem;
+            overflow hidden;
+            border 1px solid #1f2937;
+            box-shadow 0 10px 30px -15px rgba(0,0,0,0.7);
+            transition all 0.3s ease-in-out;
+            transform-style preserve-3d;
+        }
+        .project-cardhover {
+            transform translateY(-10px) perspective(1000px) rotateX(2deg) rotateY(-2deg);
+            box-shadow 0 0 25px rgba(100, 255, 218, 0.3);
+        }
+        .skill-tag {
+            background-color #1f2937;
+            color #64ffda;
+            transition all 0.3s ease-in-out;
+        }
+        .skill-taghover {
+            background-color #64ffda;
+            color #000000;
+            transform scale(1.1);
+        }
+        .scroll-animate .animate-child {
+            opacity 0;
+            transform translateY(30px);
+            transition opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .scroll-animate.visible .animate-child {
+            opacity 1;
+            transform translateY(0);
+        }
+        @keyframes pulse {
+            50% { box-shadow 0 0 0 10px rgba(100, 255, 218, 0); }
+        }
+        .animate-pulse-slow {
+            animation pulse 2.5s infinite;
+            box-shadow 0 0 0 0 rgba(100, 255, 218, 0.7);
+        }
+         Floating Animation 
+        @keyframes float {
+            0% {
+                transform translateY(0px);
+            }
+            50% {
+                transform translateY(-8px);
+            }
+            100% {
+                transform translateY(0px);
+            }
+        }
+        .animate-float {
+            animation float 6s ease-in-out infinite;
+        }
+    style
+head
+body class=text-gray-400
+
+    div class=cursor-dotdiv
+    div class=cursor-outlinediv
+
+    div id=particles-jsdiv
+
+    !-- Header --
+    header id=header class=bg-black80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300
+        div class=container mx-auto px-4 smpx-6 lgpx-8
+            div class=flex items-center justify-between h-16
+                div class=flex-shrink-0
+                    a href=#hero class=text-2xl font-bold text-cyan-400 tracking-widestDDa
+                div
+                div class=hidden mdblock
+                    div class=ml-10 flex items-baseline space-x-2
+                        a href=#about class=text-gray-300 hovertext-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colorsAbouta
+                        a href=#projects class=text-gray-300 hovertext-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colorsProjectsa
+                        a href=#skills class=text-gray-300 hovertext-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colorsSkillsa
+                        a href=#contact class=text-gray-300 hovertext-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colorsContacta
+                    div
+                div
+                div class=mdhidden flex items-center
+                    button id=mobile-menu-button class=inline-flex items-center justify-center p-2 rounded-md text-gray-400 hovertext-white hoverbg-gray-800 focusoutline-none
+                        span class=sr-onlyOpen main menuspan
+                        i data-lucide=menu class=block h-6 w-6i
+                        i data-lucide=x class=hidden h-6 w-6i
+                    button
+                div
+            div
+        div
+        div class=mdhidden hidden id=mobile-menu
+            div class=px-2 pt-2 pb-3 space-y-1 smpx-3 bg-gray-900
+                a href=#about class=text-gray-300 hoverbg-gray-700 hovertext-white block px-3 py-2 rounded-md text-base font-mediumAbouta
+                a href=#projects class=text-gray-300 hoverbg-gray-700 hovertext-white block px-3 py-2 rounded-md text-base font-mediumProjectsa
+                a href=#skills class=text-gray-300 hoverbg-gray-700 hovertext-white block px-3 py-2 rounded-md text-base font-mediumSkillsa
+                a href=#contact class=text-gray-300 hoverbg-gray-700 hovertext-white block px-3 py-2 rounded-md text-base font-mediumContacta
+            div
+        div
+    header
+
+    main class=container mx-auto px-4 smpx-6 lgpx-8
+        !-- Hero Section --
+        section id=hero class=min-h-screen flex items-center
+            div class=w-full
+                p class=text-cyan-400 text-lg mb-4 animate-child style=transition-delay 100ms;Hi, my name isp
+                h1 class=text-4xl mdtext-7xl font-bold text-gray-100 leading-tight animate-child style=transition-delay 200ms;Diwakar Dehariya.h1
+                h2 class=text-4xl mdtext-7xl font-bold text-gray-500 leading-tight mt-2 animate-child style=transition-delay 300ms;I build things for the web.h2
+                p class=mt-6 text-xl text-gray-400 max-w-xl animate-child style=transition-delay 400ms;I'm a span id=typed-text class=text-gradient font-semiboldSoftware Engineerspan specializing in building exceptional digital experiences.p
+                div class=mt-12 animate-child style=transition-delay 500ms;
+                    a href=#projects class=text-cyan-400 border border-cyan-400 hoverbg-cyan-40010 font-bold py-3 px-8 rounded-md text-lg transition duration-300 animate-pulse-slowCheck out my projects!a
+                div
+            div
+        section
+
+        !-- About Section --
+        section id=about class=section scroll-animate
+            div class=section-divider
+                svg data-name=Layer 1 xmlns=httpwww.w3.org2000svg viewBox=0 0 1200 120 preserveAspectRatio=nonepath d=M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z class=shape-fillpathsvg
+            div
+            h2 class=section-title animate-childAbout Meh2
+            div class=max-w-4xl mx-auto grid grid-cols-1 mdgrid-cols-5 gap-12 items-center
+                div class=mdcol-span-3 text-lg text-gray-400 animate-child style=transition-delay 200ms;
+                    p class=mb-4Hello! I'm Diwakar, an experienced Software Engineer from Noida, U.P. with over 2 years of expertise in building and maintaining production-level applications using Java, Spring Boot, and Microservices.p
+                    p class=mb-4My journey into tech is driven by strong debugging skills and a passion for creating streamlined financial and communication workflows. I enjoy turning complex problems into simple, beautiful, and intuitive designs.p
+                div
+                div id=parallax-container class=mdcol-span-2 animate-child style=transition-delay 400ms;
+                    div id=parallax-element class=w-64 h-64 mx-auto relative group animate-float
+                        div class=absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-75 group-hoveropacity-100 transition duration-1000 group-hoverduration-200 animate-tiltdiv
+                        img src=httpsplacehold.co400x40000000064ffdatext=DD alt=Diwakar Dehariya class=relative rounded-full shadow-lg w-full h-full object-cover border-2 border-gray-800
+                    div
+                div
+            div
+        section
+
+        !-- Projects Section --
+        section id=projects class=section scroll-animate
+             div class=section-divider style=transform rotate(0); top -1px; bottom auto;
+                svg data-name=Layer 1 xmlns=httpwww.w3.org2000svg viewBox=0 0 1200 120 preserveAspectRatio=nonepath d=M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z class=shape-fillpathsvg
+            div
+            h2 class=section-title animate-childMy Projectsh2
+            div class=grid grid-cols-1 mdgrid-cols-2 lggrid-cols-3 gap-8
+                !-- Project 1 --
+                div class=project-card flex flex-col animate-child style=transition-delay 200ms;
+                    img src=httpsplacehold.co600x40011182764ffdatext=SCF alt=Supply Chain Finance class=w-full h-48 object-cover
+                    div class=p-6 flex flex-col flex-grow
+                        h3 class=text-xl font-bold text-gray-200 mb-2Supply Chain Finance (SCF)h3
+                        p class=text-gray-400 mb-4 flex-growBuilt core disbursement and settlement flows for products like Invoice Discounting. Developed a high-performance Spring Boot solution to auto-disburse loans.p
+                        div class=flex flex-wrap gap-2 mb-4
+                            span class=bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-fullJavaspan
+                            span class=bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-fullSpring Bootspan
+                        div
+                        div class=flex justify-end space-x-4 mt-auto
+                            a href=# class=text-gray-500 hovertext-cyan-400 transition-colors duration-300 title=View Codei data-lucide=github class=w-6 h-6ia
+                            a href=# class=text-gray-500 hovertext-cyan-400 transition-colors duration-300 title=Live Demoi data-lucide=external-link class=w-6 h-6ia
+                        div
+                    div
+                div
+                !-- Project 2 --
+                div class=project-card flex flex-col animate-child style=transition-delay 400ms;
+                    img src=httpsplacehold.co600x40011182764ffdatext=Nandi alt=Nandi Duniya Kisan Ki class=w-full h-48 object-cover
+                    div class=p-6 flex flex-col flex-grow
+                        h3 class=text-xl font-bold text-gray-200 mb-2Nandi Duniya Kisan Kih3
+                        p class=text-gray-400 mb-4 flex-growA mobile marketplace app for farmers. Developed the Flutter-based frontend and integrated Node.js APIs for backend operations with MongoDB.p
+                        div class=flex flex-wrap gap-2 mb-4
+                            span class=bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-fullFlutterspan
+                            span class=bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-fullNode.jsspan
+                        div
+                        div class=flex justify-end space-x-4 mt-auto
+                            a href=# class=text-gray-500 hovertext-cyan-400 transition-colors duration-300 title=View Codei data-lucide=github class=w-6 h-6ia
+                            a href=# class=text-gray-500 hovertext-cyan-400 transition-colors duration-300 title=Live Demoi data-lucide=external-link class=w-6 h-6ia
+                        div
+                    div
+                div
+                !-- Project 3 --
+                div class=project-card flex flex-col animate-child style=transition-delay 600ms;
+                    img src=httpsplacehold.co600x40011182764ffdatext=SWIFT alt=MT Swift Message Services class=w-full h-48 object-cover
+                    div class=p-6 flex flex-col flex-grow
+                        h3 class=text-xl font-bold text-gray-200 mb-2MT Swift Message Servicesh3
+                        p class=text-gray-400 mb-4 flex-growDesigned and developed four microservices to automate SWIFT message handling, from generation to secure transmission via IBM MQ and processing.p
+                        div class=flex flex-wrap gap-2 mb-4
+                            span class=bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-fullMicroservicesspan
+                            span class=bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-fullIBM MQspan
+                        div
+                        div class=flex justify-end space-x-4 mt-auto
+                            a href=# class=text-gray-500 hovertext-cyan-400 transition-colors duration-300 title=View Codei data-lucide=github class=w-6 h-6ia
+                            a href=# class=text-gray-500 hovertext-cyan-400 transition-colors duration-300 title=Live Demoi data-lucide=external-link class=w-6 h-6ia
+                        div
+                    div
+                div
+            div
+        section
+
+        !-- Skills Section --
+        section id=skills class=section scroll-animate
+            h2 class=section-title animate-childTechnical Skillsh2
+            div class=max-w-5xl mx-auto text-center
+                div class=flex flex-wrap justify-center gap-4 text-lg
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 100ms; animation-delay 0s;Javadiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 150ms; animation-delay 0.2s;Spring Bootdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 200ms; animation-delay 0.4s;Microservicesdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 250ms; animation-delay 0.1s;Hibernatediv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 300ms; animation-delay 0.3s;Spring Securitydiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 350ms; animation-delay 0.5s;Apache Kafkadiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 400ms; animation-delay 0.2s;Flutterdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 450ms; animation-delay 0.4s;Dartdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 500ms; animation-delay 0.1s;JavaScriptdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 550ms; animation-delay 0.3s;SQLdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 600ms; animation-delay 0.5s;JDBCdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 650ms; animation-delay 0s;Git & GitHubdiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 700ms; animation-delay 0.2s;Postmandiv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 750ms; animation-delay 0.4s;VS Codediv
+                    div class=skill-tag py-2 px-4 rounded-lg animate-child animate-float style=transition-delay 800ms; animation-delay 0.1s;C++div
+                div
+            div
+        section
+
+        !-- Contact Section --
+        section id=contact class=section scroll-animate
+            h2 class=section-title animate-childGet In Touchh2
+            div class=max-w-xl mx-auto text-center
+                p class=text-lg text-gray-400 mb-8 animate-child style=transition-delay 200ms;I'm currently seeking new opportunities. My inbox is always open, so whether you have a question or just want to say hi, I'll do my best to get back to you!p
+                a href=mailtodiwakardehariya2110@gmail.com id=magnetic-button class=text-cyan-400 border border-cyan-400 hoverbg-cyan-40010 font-bold py-3 px-8 rounded-md text-lg transition-transform duration-300 inline-block animate-child style=transition-delay 400ms;Say Helloa
+            div
+        section
+    main
+
+    !-- Footer --
+    footer class=py-6 text-center text-gray-500
+        div class=flex justify-center space-x-6 mb-4
+            a href=httpslinkedin.comindiwakardehariya target=_blank class=hovertext-cyan-400 transition-colors duration-300 animate-floati data-lucide=linkedin class=w-6 h-6ia
+        div
+        p&copy; span id=yearspan Diwakar Dehariya. Built with passion.p
+    footer
+
+    script src=httpscdn.jsdelivr.netparticles.js2.0.0particles.min.jsscript
+    script
+        lucide.createIcons();
+        
+         --- Custom Cursor ---
+        const cursorDot = document.querySelector(.cursor-dot);
+        const cursorOutline = document.querySelector(.cursor-outline);
+        window.addEventListener(mousemove, function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+            if (cursorDot) {
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+            }
+            if (cursorOutline) {
+                cursorOutline.style.left = `${posX}px`;
+                cursorOutline.style.top = `${posY}px`;
+                cursorOutline.animate({
+                    left `${posX}px`,
+                    top `${posY}px`
+                }, { duration 500, fill forwards });
+            }
+        });
+
+         --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcons = mobileMenuButton.querySelectorAll('i');
+        mobileMenuButton.addEventListener('click', () = {
+            mobileMenu.classList.toggle('hidden');
+            menuIcons.forEach(icon = icon.classList.toggle('hidden'));
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link = {
+            link.addEventListener('click', () = {
+                mobileMenu.classList.add('hidden');
+                menuIcons.forEach(icon = icon.classList.toggle('hidden'));
+            });
+        });
+
+        const yearSpan = document.getElementById('year');
+        if (yearSpan) {
+            yearSpan.textContent = new Date().getFullYear();
+        }
+
+         --- Typing Effect ---
+        const words = [a Software Engineer, a Java Developer, a Creative Problem-Solver, a Full-Stack Engineer];
+        let i = 0, j = 0, currentWord = , isDeleting = false;
+        const typedText = document.getElementById(typed-text);
+        function type() {
+            if (!typedText) return;
+            currentWord = words[i];
+            if (isDeleting) j--; else j++;
+            typedText.textContent = currentWord.substring(0, j);
+            if (!isDeleting && j === currentWord.length) {
+                isDeleting = true;
+                setTimeout(type, 2000);
+            } else if (isDeleting && j === 0) {
+                isDeleting = false;
+                i = (i + 1) % words.length;
+                setTimeout(type, 500);
+            } else {
+                setTimeout(type, isDeleting  50  120);
+            }
+        }
+        
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () = {
+            if (header) {
+                header.classList.toggle('shadow-lg', window.scrollY  50);
+                header.classList.toggle('shadow-cyan-50010', window.scrollY  50);
+            }
+        });
+
+         --- Scroll Animations ---
+        const observer = new IntersectionObserver((entries) = {
+            entries.forEach(entry = {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    const children = entry.target.querySelectorAll('.animate-child');
+                    children.forEach((child, index) = {
+                        const delay = child.style.transitionDelay  (index  100) + 'ms';  Adjusted delay for skills
+                        child.style.transitionDelay = delay;
+                    });
+                }
+            });
+        }, { threshold 0.1 });
+        document.querySelectorAll('.scroll-animate').forEach(el = observer.observe(el));
+        
+        document.addEventListener('DOMContentLoaded', () = {
+            type();
+            const hero = document.getElementById('hero');
+            if (hero) {
+                hero.classList.add('scroll-animate', 'visible');
+            }
+        });
+
+         --- Parallax Effect ---
+        const parallaxContainer = document.getElementById('parallax-container');
+        const parallaxElement = document.getElementById('parallax-element');
+        window.addEventListener('scroll', () = {
+            if (parallaxContainer && parallaxElement) {
+                const scroll = window.pageYOffset;
+                const containerTop = parallaxContainer.offsetTop;
+                const elementTop = scroll - containerTop;
+                parallaxElement.style.transform = `translateY(${elementTop  0.1}px)`;
+            }
+        });
+
+         --- Magnetic Button ---
+        const magneticButton = document.getElementById('magnetic-button');
+        if (magneticButton) {
+            magneticButton.addEventListener('mousemove', function(e) {
+                const rect = magneticButton.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width  2;
+                const y = e.clientY - rect.top - rect.height  2;
+                magneticButton.style.transform = `translate(${x  0.2}px, ${y  0.2}px)`;
+            });
+            magneticButton.addEventListener('mouseleave', function() {
+                magneticButton.style.transform = 'translate(0,0)';
+            });
+        }
+
+         --- Particles.js Configuration ---
+        if (typeof particlesJS !== 'undefined') {
+            particlesJS('particles-js', {
+              particles {
+                number { value 40, density { enable true, value_area 800 } },
+                color { value #ffffff },
+                shape { type circle },
+                opacity { value 0.3, random true, anim { enable true, speed 1, opacity_min 0.05, sync false } },
+                size { value 2, random true },
+                line_linked { enable true, distance 150, color #4a5568, opacity 0.2, width 1 },
+                move { enable true, speed 1, direction none, random true, straight false, out_mode out }
+              },
+              interactivity {
+                detect_on canvas,
+                events { onhover { enable true, mode grab }, onclick { enable false }, resize true },
+                modes { grab { distance 140, line_linked { opacity 0.5 } } }
+              },
+              retina_detect true
+            });
+        }
+    script
+body
+html
