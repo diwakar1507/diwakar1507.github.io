@@ -1,466 +1,268 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diwakar Dehariya - Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #000000;
-            cursor: none; /* Hide default cursor */
-        }
-        /* Custom Cursor */
-        .cursor-dot, .cursor-outline {
-            pointer-events: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            border-radius: 50%;
-            opacity: 0;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-            z-index: 9999;
-        }
-        .cursor-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #64ffda;
-        }
-        .cursor-outline {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(100, 255, 218, 0.2);
-            transition: all 0.08s ease-out;
-        }
-        body:hover .cursor-dot, body:hover .cursor-outline {
-            opacity: 1;
-        }
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        main, header, footer {
-            position: relative;
-            z-index: 1;
-        }
-        .section {
-            padding-top: 6rem;
-            padding-bottom: 6rem;
-            position: relative;
-        }
-        .section-divider {
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            overflow: hidden;
-            line-height: 0;
-            transform: rotate(180deg);
-        }
-        .section-divider svg {
-            position: relative;
-            display: block;
-            width: calc(100% + 1.3px);
-            height: 80px;
-        }
-        .section-divider .shape-fill {
-            fill: #000000;
-        }
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            text-align: center;
-            color: #e2e8f0;
-        }
-        .text-gradient {
-            background: linear-gradient(90deg, #64ffda, #00c6ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .project-card {
-            background-color: #111827;
-            border-radius: 0.5rem;
-            overflow: hidden;
-            border: 1px solid #1f2937;
-            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.7);
-            transition: all 0.3s ease-in-out;
-            transform-style: preserve-3d;
-        }
-        .project-card:hover {
-            transform: translateY(-10px) perspective(1000px) rotateX(2deg) rotateY(-2deg);
-            box-shadow: 0 0 25px rgba(100, 255, 218, 0.3);
-        }
-        .skill-tag {
-            background-color: #1f2937;
-            color: #64ffda;
-            transition: all 0.3s ease-in-out;
-        }
-        .skill-tag:hover {
-            background-color: #64ffda;
-            color: #000000;
-            transform: scale(1.1);
-        }
-        .scroll-animate .animate-child {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-        .scroll-animate.visible .animate-child {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        @keyframes pulse {
-            50% { box-shadow: 0 0 0 10px rgba(100, 255, 218, 0); }
-        }
-        .animate-pulse-slow {
-            animation: pulse 2.5s infinite;
-            box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.7);
-        }
-        /* Floating Animation */
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-8px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diwakar Dehariya - Portfolio</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+body{
+background:black;
+color:#9ca3af;
+font-family:Inter,sans-serif;
+}
+
+/* Glow */
+.glow:hover{box-shadow:0 0 25px #64ffda}
+
+/* Ripple */
+.ripple{position:relative;overflow:hidden}
+.ripple:after{
+content:"";position:absolute;
+width:200%;height:200%;
+background:rgba(100,255,218,.3);
+top:50%;left:50%;
+transform:translate(-50%,-50%) scale(0);
+transition:.6s;border-radius:50%;
+}
+.ripple:active:after{
+transform:translate(-50%,-50%) scale(1);
+}
+
+/* Cards */
+.project-card{
+background:#111827;
+border-radius:12px;
+padding:20px;
+transition:.3s;
+}
+.project-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(100,255,218,.4);
+}
+
+/* Light Mode */
+html:not(.dark) body{
+background:#f8fafc;color:#0f172a
+}
+html:not(.dark) .project-card{
+background:white
+}
+</style>
 </head>
-<body class="text-gray-400">
 
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+<body>
 
-    <div id="particles-js"></div>
+<!-- ================= HEADER ================= -->
+<header class="fixed top-0 w-full bg-black/80 backdrop-blur z-50">
+<div class="max-w-6xl mx-auto flex justify-between items-center p-4">
 
-    <!-- Header -->
-    <header id="header" class="bg-black/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex-shrink-0">
-                    <a href="#hero" class="text-2xl font-bold text-cyan-400 tracking-widest">DD</a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-2">
-                        <a href="#about" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
-                        <a href="#projects" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Projects</a>
-                        <a href="#skills" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Skills</a>
-                        <a href="#contact" class="text-gray-300 hover:text-cyan-400 px-3 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none">
-                        <span class="sr-only">Open main menu</span>
-                        <i data-lucide="menu" class="block h-6 w-6"></i>
-                        <i data-lucide="x" class="hidden h-6 w-6"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-900">
-                <a href="#about" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-                <a href="#projects" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-                <a href="#skills" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
-                <a href="#contact" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-            </div>
-        </div>
-    </header>
+<h1 class="text-xl font-bold text-cyan-400">DD</h1>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-screen flex items-center">
-            <div class="w-full">
-                <p class="text-cyan-400 text-lg mb-4 animate-child" style="transition-delay: 100ms;">Hi, my name is</p>
-                <h1 class="text-4xl md:text-7xl font-bold text-gray-100 leading-tight animate-child" style="transition-delay: 200ms;">Diwakar Dehariya.</h1>
-                <h2 class="text-4xl md:text-7xl font-bold text-gray-500 leading-tight mt-2 animate-child" style="transition-delay: 300ms;">I build things for the web.</h2>
-                <p class="mt-6 text-xl text-gray-400 max-w-xl animate-child" style="transition-delay: 400ms;">I'm a <span id="typed-text" class="text-gradient font-semibold">Software Engineer</span> specializing in building exceptional digital experiences.</p>
-                <div class="mt-12 animate-child" style="transition-delay: 500ms;">
-                    <a href="#projects" class="text-cyan-400 border border-cyan-400 hover:bg-cyan-400/10 font-bold py-3 px-8 rounded-md text-lg transition duration-300 animate-pulse-slow">Check out my projects!</a>
-                </div>
-            </div>
-        </section>
+<div class="flex items-center gap-3">
 
-        <!-- About Section -->
-        <section id="about" class="section scroll-animate">
-            <div class="section-divider">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
-            </div>
-            <h2 class="section-title animate-child">About Me</h2>
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-12 items-center">
-                <div class="md:col-span-3 text-lg text-gray-400 animate-child" style="transition-delay: 200ms;">
-                    <p class="mb-4">Hello! I'm Diwakar, an experienced Software Engineer from Noida, U.P. with over 2 years of expertise in building and maintaining production-level applications using Java, Spring Boot, and Microservices.</p>
-                    <p class="mb-4">My journey into tech is driven by strong debugging skills and a passion for creating streamlined financial and communication workflows. I enjoy turning complex problems into simple, beautiful, and intuitive designs.</p>
-                </div>
-                <div id="parallax-container" class="md:col-span-2 animate-child" style="transition-delay: 400ms;">
-                    <div id="parallax-element" class="w-64 h-64 mx-auto relative group animate-float">
-                        <div class="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-                        <img src="https://placehold.co/400x400/000000/64ffda?text=DD" alt="Diwakar Dehariya" class="relative rounded-full shadow-lg w-full h-full object-cover border-2 border-gray-800">
-                    </div>
-                </div>
-            </div>
-        </section>
+<button id="theme-toggle"
+class="p-2 rounded-full border border-gray-600 text-cyan-400 hover:bg-cyan-400/10">
+🌙
+</button>
 
-        <!-- Projects Section -->
-        <section id="projects" class="section scroll-animate">
-             <div class="section-divider" style="transform: rotate(0); top: -1px; bottom: auto;">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path></svg>
-            </div>
-            <h2 class="section-title animate-child">My Projects</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="project-card flex flex-col animate-child" style="transition-delay: 200ms;">
-                    <img src="https://placehold.co/600x400/111827/64ffda?text=SCF" alt="Supply Chain Finance" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-gray-200 mb-2">Supply Chain Finance (SCF)</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">Built core disbursement and settlement flows for products like Invoice Discounting. Developed a high-performance Spring Boot solution to auto-disburse loans.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Java</span>
-                            <span class="bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Spring Boot</span>
-                        </div>
-                        <div class="flex justify-end space-x-4 mt-auto">
-                            <a href="#" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300" title="View Code"><i data-lucide="github" class="w-6 h-6"></i></a>
-                            <a href="#" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300" title="Live Demo"><i data-lucide="external-link" class="w-6 h-6"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="project-card flex flex-col animate-child" style="transition-delay: 400ms;">
-                    <img src="https://placehold.co/600x400/111827/64ffda?text=Nandi" alt="Nandi: Duniya Kisan Ki" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-gray-200 mb-2">Nandi: Duniya Kisan Ki</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">A mobile marketplace app for farmers. Developed the Flutter-based frontend and integrated Node.js APIs for backend operations with MongoDB.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Flutter</span>
-                            <span class="bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Node.js</span>
-                        </div>
-                        <div class="flex justify-end space-x-4 mt-auto">
-                            <a href="#" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300" title="View Code"><i data-lucide="github" class="w-6 h-6"></i></a>
-                            <a href="#" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300" title="Live Demo"><i data-lucide="external-link" class="w-6 h-6"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="project-card flex flex-col animate-child" style="transition-delay: 600ms;">
-                    <img src="https://placehold.co/600x400/111827/64ffda?text=SWIFT" alt="MT Swift Message Services" class="w-full h-48 object-cover">
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="text-xl font-bold text-gray-200 mb-2">MT Swift Message Services</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">Designed and developed four microservices to automate SWIFT message handling, from generation to secure transmission via IBM MQ and processing.</p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">Microservices</span>
-                            <span class="bg-gray-800 text-cyan-300 text-xs font-semibold px-2.5 py-0.5 rounded-full">IBM MQ</span>
-                        </div>
-                        <div class="flex justify-end space-x-4 mt-auto">
-                            <a href="#" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300" title="View Code"><i data-lucide="github" class="w-6 h-6"></i></a>
-                            <a href="#" class="text-gray-500 hover:text-cyan-400 transition-colors duration-300" title="Live Demo"><i data-lucide="external-link" class="w-6 h-6"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<a href="#projects" class="hover:text-cyan-400">Projects</a>
+<a href="#skills" class="hover:text-cyan-400">Skills</a>
+<a href="#contact" class="hover:text-cyan-400">Contact</a>
 
-        <!-- Skills Section -->
-        <section id="skills" class="section scroll-animate">
-            <h2 class="section-title animate-child">Technical Skills</h2>
-            <div class="max-w-5xl mx-auto text-center">
-                <div class="flex flex-wrap justify-center gap-4 text-lg">
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 100ms; animation-delay: 0s;">Java</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 150ms; animation-delay: 0.2s;">Spring Boot</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 200ms; animation-delay: 0.4s;">Microservices</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 250ms; animation-delay: 0.1s;">Hibernate</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 300ms; animation-delay: 0.3s;">Spring Security</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 350ms; animation-delay: 0.5s;">Apache Kafka</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 400ms; animation-delay: 0.2s;">Flutter</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 450ms; animation-delay: 0.4s;">Dart</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 500ms; animation-delay: 0.1s;">JavaScript</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 550ms; animation-delay: 0.3s;">SQL</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 600ms; animation-delay: 0.5s;">JDBC</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 650ms; animation-delay: 0s;">Git & GitHub</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 700ms; animation-delay: 0.2s;">Postman</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 750ms; animation-delay: 0.4s;">VS Code</div>
-                    <div class="skill-tag py-2 px-4 rounded-lg animate-child animate-float" style="transition-delay: 800ms; animation-delay: 0.1s;">C++</div>
-                </div>
-            </div>
-        </section>
+</div>
+</div>
+</header>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section scroll-animate">
-            <h2 class="section-title animate-child">Get In Touch</h2>
-            <div class="max-w-xl mx-auto text-center">
-                <p class="text-lg text-gray-400 mb-8 animate-child" style="transition-delay: 200ms;">I'm currently seeking new opportunities. My inbox is always open, so whether you have a question or just want to say hi, I'll do my best to get back to you!</p>
-                <a href="mailto:diwakardehariya2110@gmail.com" id="magnetic-button" class="text-cyan-400 border border-cyan-400 hover:bg-cyan-400/10 font-bold py-3 px-8 rounded-md text-lg transition-transform duration-300 inline-block animate-child" style="transition-delay: 400ms;">Say Hello</a>
-            </div>
-        </section>
-    </main>
+<!-- ================= HERO ================= -->
+<section class="min-h-screen flex items-center max-w-6xl mx-auto px-6">
 
-    <!-- Footer -->
-    <footer class="py-6 text-center text-gray-500">
-        <div class="flex justify-center space-x-6 mb-4">
-            <a href="https://linkedin.com/in/diwakardehariya" target="_blank" class="hover:text-cyan-400 transition-colors duration-300 animate-float"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-        </div>
-        <p>&copy; <span id="year"></span> Diwakar Dehariya. Built with passion.</p>
-    </footer>
+<div>
+<p class="text-cyan-400">Hi, my name is</p>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        lucide.createIcons();
-        
-        // --- Custom Cursor ---
-        const cursorDot = document.querySelector(".cursor-dot");
-        const cursorOutline = document.querySelector(".cursor-outline");
-        window.addEventListener("mousemove", function (e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            if (cursorDot) {
-                cursorDot.style.left = `${posX}px`;
-                cursorDot.style.top = `${posY}px`;
-            }
-            if (cursorOutline) {
-                cursorOutline.style.left = `${posX}px`;
-                cursorOutline.style.top = `${posY}px`;
-                cursorOutline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
-            }
-        });
+<h1 class="text-5xl md:text-7xl font-bold text-white mt-2">
+Diwakar Dehariya
+</h1>
 
-        // --- Mobile Menu Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const menuIcons = mobileMenuButton.querySelectorAll('i');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            menuIcons.forEach(icon => icon.classList.toggle('hidden'));
-        });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                menuIcons.forEach(icon => icon.classList.toggle('hidden'));
-            });
-        });
+<h2 class="text-4xl md:text-6xl text-gray-500 mt-2">
+I build scalable backend systems.
+</h2>
 
-        const yearSpan = document.getElementById('year');
-        if (yearSpan) {
-            yearSpan.textContent = new Date().getFullYear();
-        }
+<p class="mt-6 max-w-xl text-lg">
+Backend Software Engineer with 2+ years experience building secure,
+high-availability fintech systems using Java, Spring Boot & Microservices.
+</p>
 
-        // --- Typing Effect ---
-        const words = ["a Software Engineer", "a Java Developer", "a Creative Problem-Solver", "a Full-Stack Engineer"];
-        let i = 0, j = 0, currentWord = "", isDeleting = false;
-        const typedText = document.getElementById("typed-text");
-        function type() {
-            if (!typedText) return;
-            currentWord = words[i];
-            if (isDeleting) j--; else j++;
-            typedText.textContent = currentWord.substring(0, j);
-            if (!isDeleting && j === currentWord.length) {
-                isDeleting = true;
-                setTimeout(type, 2000);
-            } else if (isDeleting && j === 0) {
-                isDeleting = false;
-                i = (i + 1) % words.length;
-                setTimeout(type, 500);
-            } else {
-                setTimeout(type, isDeleting ? 50 : 120);
-            }
-        }
-        
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (header) {
-                header.classList.toggle('shadow-lg', window.scrollY > 50);
-                header.classList.toggle('shadow-cyan-500/10', window.scrollY > 50);
-            }
-        });
+<div class="mt-8">
+<button id="openResumeModal"
+class="text-cyan-400 border border-cyan-400 px-8 py-3 rounded ripple glow">
+Download Resume
+</button>
+</div>
 
-        // --- Scroll Animations ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    const children = entry.target.querySelectorAll('.animate-child');
-                    children.forEach((child, index) => {
-                        const delay = child.style.transitionDelay || (index * 100) + 'ms'; // Adjusted delay for skills
-                        child.style.transitionDelay = delay;
-                    });
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            type();
-            const hero = document.getElementById('hero');
-            if (hero) {
-                hero.classList.add('scroll-animate', 'visible');
-            }
-        });
+</div>
+</section>
 
-        // --- Parallax Effect ---
-        const parallaxContainer = document.getElementById('parallax-container');
-        const parallaxElement = document.getElementById('parallax-element');
-        window.addEventListener('scroll', () => {
-            if (parallaxContainer && parallaxElement) {
-                const scroll = window.pageYOffset;
-                const containerTop = parallaxContainer.offsetTop;
-                const elementTop = scroll - containerTop;
-                parallaxElement.style.transform = `translateY(${elementTop * 0.1}px)`;
-            }
-        });
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="max-w-6xl mx-auto px-6 py-24">
 
-        // --- Magnetic Button ---
-        const magneticButton = document.getElementById('magnetic-button');
-        if (magneticButton) {
-            magneticButton.addEventListener('mousemove', function(e) {
-                const rect = magneticButton.getBoundingClientRect();
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-                magneticButton.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
-            });
-            magneticButton.addEventListener('mouseleave', function() {
-                magneticButton.style.transform = 'translate(0,0)';
-            });
-        }
+<h2 class="text-3xl font-bold text-center text-white mb-12">
+Projects
+</h2>
 
-        // --- Particles.js Configuration ---
-        if (typeof particlesJS !== 'undefined') {
-            particlesJS('particles-js', {
-              "particles": {
-                "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.3, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.05, "sync": false } },
-                "size": { "value": 2, "random": true },
-                "line_linked": { "enable": true, "distance": 150, "color": "#4a5568", "opacity": 0.2, "width": 1 },
-                "move": { "enable": true, "speed": 1, "direction": "none", "random": true, "straight": false, "out_mode": "out" }
-              },
-              "interactivity": {
-                "detect_on": "canvas",
-                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": false }, "resize": true },
-                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } } }
-              },
-              "retina_detect": true
-            });
-        }
-    </script>
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="project-card">
+<h3 class="text-xl text-white font-bold">
+Supply Chain Finance (SCF)
+</h3>
+<p class="mt-3">
+Invoice Discounting, Factoring & Vendor Finance platform.
+STP/NSTP flows, KYC, AML, Murex integrations and AWS S3 invoice storage.
+</p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="bg-gray-800 px-2 rounded">Java</span>
+<span class="bg-gray-800 px-2 rounded">Spring Boot</span>
+<span class="bg-gray-800 px-2 rounded">Microservices</span>
+<span class="bg-gray-800 px-2 rounded">PostgreSQL</span>
+</div>
+</div>
+
+<div class="project-card">
+<h3 class="text-xl text-white font-bold">
+Nandi: Duniya Kisan Ki
+</h3>
+<p class="mt-3">
+Flutter mobile marketplace app with Node.js APIs and MongoDB backend.
+</p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="bg-gray-800 px-2 rounded">Flutter</span>
+<span class="bg-gray-800 px-2 rounded">Node.js</span>
+<span class="bg-gray-800 px-2 rounded">MongoDB</span>
+</div>
+</div>
+
+<div class="project-card">
+<h3 class="text-xl text-white font-bold">
+MT/MX Swift Message Services
+</h3>
+<p class="mt-3">
+Parallel asynchronous SWIFT processing with IBM MQ,
+fallback, retries, circuit breakers, idempotency & locking.
+</p>
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="bg-gray-800 px-2 rounded">Microservices</span>
+<span class="bg-gray-800 px-2 rounded">IBM MQ</span>
+<span class="bg-gray-800 px-2 rounded">Spring Security</span>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills" class="py-24 bg-gray-900">
+
+<h2 class="text-3xl font-bold text-center text-white mb-10">
+Technical Skills
+</h2>
+
+<div class="max-w-4xl mx-auto flex flex-wrap justify-center gap-4">
+
+<span class="bg-gray-800 px-4 py-2 rounded">Java</span>
+<span class="bg-gray-800 px-4 py-2 rounded">Spring Boot</span>
+<span class="bg-gray-800 px-4 py-2 rounded">Microservices</span>
+<span class="bg-gray-800 px-4 py-2 rounded">JWT</span>
+<span class="bg-gray-800 px-4 py-2 rounded">Spring Security</span>
+<span class="bg-gray-800 px-4 py-2 rounded">IBM MQ</span>
+<span class="bg-gray-800 px-4 py-2 rounded">Kafka</span>
+<span class="bg-gray-800 px-4 py-2 rounded">PostgreSQL</span>
+<span class="bg-gray-800 px-4 py-2 rounded">MongoDB</span>
+<span class="bg-gray-800 px-4 py-2 rounded">AWS S3</span>
+
+</div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-24 text-center">
+
+<h2 class="text-3xl font-bold text-white mb-6">
+Get In Touch
+</h2>
+
+<p>
+Looking for backend/microservices opportunities.
+</p>
+
+<a href="mailto:diwakardehariya2110@gmail.com"
+class="inline-block mt-6 text-cyan-400 border border-cyan-400 px-8 py-3 rounded ripple glow">
+Say Hello
+</a>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="text-center py-6">
+© 2026 Diwakar Dehariya
+</footer>
+
+<!-- ================= RESUME MODAL ================= -->
+<div id="resumeModal"
+class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+
+<div class="bg-gray-900 p-8 rounded-xl text-center relative">
+
+<button id="closeResumeModal"
+class="absolute top-2 right-3 text-gray-400">✖</button>
+
+<h2 class="text-2xl text-cyan-400 mb-4">
+Download Resume
+</h2>
+
+<div class="flex gap-4 justify-center">
+
+<a href="resume.pdf" download
+class="bg-cyan-400 text-black px-6 py-3 rounded">
+PDF
+</a>
+
+<a href="resume.docx" download
+class="bg-gray-700 text-white px-6 py-3 rounded">
+DOCX
+</a>
+
+</div>
+</div>
+</div>
+
+<!-- ================= JS ================= -->
+<script>
+lucide.createIcons();
+
+/* Theme Toggle */
+const toggle=document.getElementById("theme-toggle");
+toggle.onclick=()=>{
+document.documentElement.classList.toggle("dark");
+toggle.textContent=
+document.documentElement.classList.contains("dark")?"🌙":"☀️";
+}
+
+/* Resume Modal */
+const modal=document.getElementById("resumeModal");
+document.getElementById("openResumeModal").onclick=()=>{
+modal.classList.remove("hidden");
+modal.classList.add("flex");
+}
+document.getElementById("closeResumeModal").onclick=()=>{
+modal.classList.add("hidden");
+}
+modal.onclick=e=>{
+if(e.target===modal) modal.classList.add("hidden");
+}
+</script>
+
 </body>
 </html>
